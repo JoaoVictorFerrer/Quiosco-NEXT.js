@@ -21,4 +21,24 @@ model Producto {
  image  String
  categoryId Int
  category   Category @relation(fields: [categoryId],references: [id])
+ orderitems OrderProducts[] 
 }
+
+model Order {
+  id      Int   @id   @default(autoincrement())
+  name    String
+  total   Float
+  date    DateTime @default(now())
+  status  Boolean  @default(false)
+  orderReadyAt  DateTime?
+  orderProducts OrderProducts[] // la relacion inversa para que Order sepa que sera varios
+}
+
+model OrderProducts {
+  id      Int   @id   @default(autoincrement())
+  orderId Int
+  order Order @relation(fields: [orderId],references: [id])
+  productId Int
+  product Producto @relation(fields: [productId],references: [id])
+  quantity  Int
+} 

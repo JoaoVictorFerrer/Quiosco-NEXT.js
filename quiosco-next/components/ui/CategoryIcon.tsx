@@ -18,7 +18,7 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
       } flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
     >
       <div className="w-16 h-16 relative">
-        <Image fill src={`/icon_${category.slug}.svg`} alt="categoria" />
+        <Image fill priority src={`/icon_${category.slug}.svg`} alt=" imagen categoria" />
       </div>
 
       <Link href={`/order/${category.slug}`} className=" text-xl font-bold ">

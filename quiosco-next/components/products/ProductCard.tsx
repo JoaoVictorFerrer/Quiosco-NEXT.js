@@ -11,6 +11,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="border bg-white">
       <Image
+        priority
         width={400}
         height={500}
         src={`/products/${product.image}.jpg`}
