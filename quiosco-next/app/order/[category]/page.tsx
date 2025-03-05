@@ -1,4 +1,5 @@
 import { PageProps } from "@/.next/types/app/page";
+import NavigationAdmin from "@/components/admin/NavigationAdmin";
 import ProductCard from "@/components/products/ProductCard";
 import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma";
@@ -20,9 +21,17 @@ export default async function OrderPage({
 }: PageProps) {
   const { category } = await params;
   const products = await getProducts(category);
-
+  const adminNavigation = [
+    { url: "/admin/orders", text: "Ordenes Pendientes", blank: true ,button: true},
+    { url: "/orders", text: "Pedidos Listo", blank: true , button: true },
+  ];
   return (
     <>
+      <nav className="flex flex-row-reverse gap-2">
+          {adminNavigation.map(link => (
+            <NavigationAdmin key={link.text} link={link}/>
+          ) )}
+      </nav>
       <Heading>
        Elige y personaliza tu pedido acontinuación
       </Heading>

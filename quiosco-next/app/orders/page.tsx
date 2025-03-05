@@ -12,7 +12,7 @@ export default function OrdersPageReady() {
       .then((res) => res.json())
       .then((data) => data); 
   const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
-    refreshInterval: 60000,
+    refreshInterval: 30000,
     revalidateOnFocus: false,
   });
   if (isLoading) return <p>Cargando...</p>;
@@ -32,7 +32,10 @@ export default function OrdersPageReady() {
                      <LatestOrderItem key= {order.id} order={order}/>
                      ))}
             </div>
-        ) : <p>No hay Ordenes Listas</p> }
+
+        ) : <div className="flex flex-col items-center justify-center mt-10">
+            <p className="text-lg font-bold">No hay Ordenes Listas</p> 
+        </div> }
       </>
     );
 }
