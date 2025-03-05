@@ -1,3 +1,4 @@
+import { PageProps } from "@/.next/types/app/layout";
 import EditProductForm from "@/components/products/EditProductForm";
 import ProductForm from "@/components/products/ProductForm";
 import GoBackButton from "@/components/ui/GoBack";
@@ -16,9 +17,9 @@ async function getProductById(id: number) {
   return product;
 }
 
-export default async function page({ params }: { params: { id: string } }) {
-  const productId = await params;
-  const product = await getProductById(+productId.id);
+export default async function EditPage({ params }: PageProps) {
+  const idproduct = await params
+  const product = await getProductById(+idproduct.id);
 
   return (
     <>

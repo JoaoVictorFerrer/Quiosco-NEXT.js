@@ -1,3 +1,4 @@
+import { PageProps } from "@/.next/types/app/page";
 import ProductPagination from "@/components/products/ProductPagination";
 import ProductsSearch from "@/components/products/ProductsSearch";
 import ProductTable from "@/components/products/ProductsTable";
@@ -29,9 +30,7 @@ export type ProductsWithCategory = Awaited<ReturnType<typeof getProducts>>;
 
 export default async function ProductsPage({
   searchParams,
-}: {
-  searchParams: { page: string };
-}) {
+}: PageProps) {
   const { page } = await searchParams; // el searchParams es inyectado diretamente por el query de la url
   const pageNow = +page || 1;
   const pageSize = 10;

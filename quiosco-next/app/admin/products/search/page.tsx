@@ -1,3 +1,4 @@
+import { PageProps } from "@/.next/types/app/page";
 import ProductsSearch from "@/components/products/ProductsSearch";
 import ProductTable from "@/components/products/ProductsTable";
 import Heading from "@/components/ui/Heading";
@@ -19,7 +20,7 @@ const searchProducts = async (searchTerm: string) => {
   return products
 };
 
-export default async function SearchPage({ searchParams,}: {searchParams: { search: string };}) {
+export default async function SearchPage({ searchParams,}: PageProps) {
 
   const querySearch = await searchParams;
   const products = await searchProducts(querySearch.search);

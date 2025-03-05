@@ -1,3 +1,4 @@
+import { PageProps } from "@/.next/types/app/page";
 import ProductCard from "@/components/products/ProductCard";
 import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma";
@@ -16,9 +17,7 @@ async function getProducts(category: string) {
 //este params proviene de routing dinamico de next.js
 export default async function OrderPage({
   params,
-}: {
-  params: { category: string };
-}) {
+}: PageProps) {
   const { category } = await params;
   const products = await getProducts(category);
 
