@@ -3,7 +3,7 @@ import { formatCurrency } from "@/src/utils";
 import Link from "next/link";
 
 type ProductsTableProps = {
-  products: ProductsWithCategory
+  products: ProductsWithCategory;
 };
 
 export default function ProductTable({ products }: ProductsTableProps) {
@@ -39,28 +39,31 @@ export default function ProductTable({ products }: ProductsTableProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {products.map((product) => (
-                  <tr key={product.id}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                      {" "}
-                      {product.name}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {formatCurrency(product.price)}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {product.category.name}
-                    </td>
-                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                      <Link
-                        className="text-indigo-600 hover:text-indigo-800 "
-                        href={`/admin/products/${product.id}/edit`}
-                      >
-                        Editar <span className="sr-only">{product.name}</span>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {products.length
+                  ? products.map((product) => (
+                      <tr key={product.id}>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                          {" "}
+                          {product.name}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {formatCurrency(product.price)}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {product.category.name}
+                        </td>
+                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                          <Link
+                            className="text-indigo-600 hover:text-indigo-800 "
+                            href={`/admin/products/${product.id}/edit`}
+                          >
+                            Editar{" "}
+                            <span className="sr-only">{product.name}</span>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))
+                  : " No hay elementos con este filtro "}
               </tbody>
             </table>
           </div>
