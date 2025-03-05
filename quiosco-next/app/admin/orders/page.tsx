@@ -20,7 +20,7 @@ export default  function OrdersPage() {
   const url = "/admin/orders/api"
   const fetcher = ()=> fetch(url).then(res => res.json()).then(data => data) // utilizo fetch para no respaldamer en axios o otra dependencia 
   const {data,error,isLoading} =useSWR<OrderWithProducts[]>(url,fetcher,{
-    refreshInterval: 30000, // se tendria que realizar peticiones mas seguidos pero se consumiria muchos datos de la base de datos FREE
+    refreshInterval: 1000, // se tendria que realizar peticiones mas seguidos pero se consumiria muchos datos de la base de datos FREE
     revalidateOnFocus:false
   })
   if(isLoading) return <p>Cargando...</p>

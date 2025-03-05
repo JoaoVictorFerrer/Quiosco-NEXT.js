@@ -12,7 +12,7 @@ export default function OrdersPageReady() {
       .then((res) => res.json())
       .then((data) => data); 
   const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
-    refreshInterval: 30000,
+    refreshInterval: 1000,
     revalidateOnFocus: false,
   });
   if (isLoading) return <p>Cargando...</p>;
